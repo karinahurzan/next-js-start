@@ -1,5 +1,5 @@
 import { headers } from 'next/headers';
-import AddCompanyButton from './components/AddCompanyModal';
+import AddCompanyButton from './components/AddCompanyButton';
 import MagicButton from './components/MagicButton';
 
 export default function Home() {
