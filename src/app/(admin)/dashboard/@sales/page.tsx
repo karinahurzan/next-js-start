@@ -6,9 +6,7 @@ import SummaryTableCell from '@/app/components/SummaryTableCell';
 import DashboardCard from '@/app/components/DashboardCard';
 import MagicButton from '@/app/components/MagicButton';
 
-export interface PageProps {}
-
-export default async function Page({}: PageProps) {
+export default async function Page() {
   const data = await new Promise((res) => {
     setTimeout(() => {
       res(getSummarySales());

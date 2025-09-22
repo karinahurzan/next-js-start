@@ -1,9 +1,7 @@
 import React from 'react';
 
-export interface DefaultProps {
-  children?: React.ReactNode;
-}
 
-export default function Default({ children }: DefaultProps) {
+
+export default function Default() {
   return <div>None</div>;
 }
