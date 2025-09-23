@@ -4,7 +4,9 @@ import React from 'react';
 import { Form, Formik } from 'formik';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
+  Category,
   CompanyStatus,
+  Country,
   createCompany,
   getCategories,
   getCountries,
@@ -39,13 +41,13 @@ export interface CompanyFormProps {
 export default function CompanyForm({ onSubmit }: CompanyFormProps) {
   const queryClient = useQueryClient();
 
-  const { data: categories } = useQuery({
+  const { data: categories = [] } = useQuery<Category[]>({
     queryKey: ['categories'],
     queryFn: getCategories,
     staleTime: 10 * 1000,
   });
 
-  const { data: countries } = useQuery({
+  const { data: countries = [] } = useQuery<Country[]>({
     queryKey: ['countries'],
     queryFn: getCountries,
     staleTime: 10 * 1000,

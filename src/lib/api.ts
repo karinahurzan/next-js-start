@@ -108,17 +108,15 @@ export const getPromotions = async (
 
 export const createCompany = async (
   data: Omit<Company, 'id' | 'hasPromotions'>,
-  init?: RequestInit,
-) => {
-  return sendRequest<Company>(buildUrl('companies'), {
-    ...init,
+): Promise<Company> => {
+  const res = await fetch(`/api/companies`, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
-    headers: {
-      ...(init && init.headers),
-      'content-type': 'application/json',
-    },
   });
+
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
 };
 
 export const createPromotion = async (
