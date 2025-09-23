@@ -4,8 +4,6 @@ import { getCompanies } from '@/lib/api';
 import getQueryClient from '@/lib/utils/getQueryClient';
 import CompanyTable from '@/app/components/CompanyTable';
 
-
-
 export interface PageProps {}
 
 export default async function Page({}: PageProps) {
@@ -23,13 +21,5 @@ export default async function Page({}: PageProps) {
     <HydrationBoundary state={dehydratedState}>
       <CompanyTable />
     </HydrationBoundary>
-
-
-
-
-
-
-
-
   );
 }

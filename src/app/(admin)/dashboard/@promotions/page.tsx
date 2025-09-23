@@ -22,7 +22,7 @@ export default async function Page({}: PageProps) {
         }
       >
         {data.map(({ id, title, companyTitle, discount }) => (
-          <tr key={id}>
+          <tr key={id + Math.random()}>
             <SummaryTableCell>{companyTitle}</SummaryTableCell>
             <SummaryTableCell>{title}</SummaryTableCell>
             <SummaryTableCell align="center">{`-${discount}%`}</SummaryTableCell>

@@ -4,23 +4,14 @@ import SummaryTable from '@/app/components/SummaryTable';
 import SummaryTableHeader from '@/app/components/SummaryTableHeader';
 import SummaryTableCell from '@/app/components/SummaryTableCell';
 import DashboardCard from '@/app/components/DashboardCard';
-import MagicButton from '@/app/components/MagicButton';
 
-export default async function Page() {
-  const data = await new Promise((res) => {
-    setTimeout(() => {
-      res(getSummarySales());
-    }, 4000);
-  });
+export interface PageProps {}
+
+export default async function Page({}: PageProps) {
+  const data = await getSummarySales();
 
   return (
-    <DashboardCard
-      label={
-        <>
-          Sales details <MagicButton />
-        </>
-      }
-    >
+    <DashboardCard label="Sales details">
       <SummaryTable
         headers={
           <>

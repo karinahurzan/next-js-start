@@ -63,11 +63,12 @@ const stringifyQueryParams = (params: Record<string, string>) =>
   new URLSearchParams(params).toString();
 
 const sendRequest = async <T>(url: string, init?: RequestInit) => {
-  const res = await fetch(url, init);
-  if (!res.ok) {
-    throw new Error(await res.text());
-  }
+  const res = await fetch(url, {
+    ...init,
+    next: { revalidate: 60 }, // кеш 1 хв
+  });
 
+  if (!res.ok) throw new Error(await res.text());
   return (await res.json()) as T;
 };
 
